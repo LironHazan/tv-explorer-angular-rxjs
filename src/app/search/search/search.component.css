@@ -1,0 +1,8 @@
+.search input {
+  color: gray;
+  font: inherit;
+  border-color: mediumorchid;
+  border-radius: 5px;
+  padding-left: 1em;
+  width: 18em;
+}
