@@ -17,17 +17,14 @@ import { SearchService } from './search/search.service';
 })
 export class AppComponent {
   title = 'app';
-  showMsg = '';
+  shows = 'search a show';
+  //initialCount: number = 10;
 
   constructor (private SearchService: SearchService) {}
 
-  public onNotifyClicked(message: string): void {
-    this.showMsg = message;
-    console.log('hey!');
-  }
-
   searchTvShow(data: any): void {
-    console.log('Picked date: ', data);
+    console.log('shows: ', data);
+    this.shows = data;
   }
 
 }

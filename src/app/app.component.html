@@ -1,6 +1,5 @@
 <div>
-  <app-search> </app-search>
-  <app-shows (onShowsResult)="searchTvShow($event)" (notify)="onNotifyClicked($event)"> </app-shows>
-  <div> {{showMsg}} </div>
+  <app-search (onShowsResult)="searchTvShow($event)"> </app-search>
+  <app-shows [shows]="shows"> </app-shows>
 </div>
 

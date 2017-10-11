@@ -17,11 +17,6 @@ export class SearchComponent implements OnInit {
 
   @Output() onShowsResult = new EventEmitter();
 
-  @Output() public notify: EventEmitter<string> = new EventEmitter<string>();
-
-  onClick(){
-    this.notify.emit('msg from search component');
-  }
   values = '';
 
   searchTvShow(e: any){
@@ -30,7 +25,6 @@ export class SearchComponent implements OnInit {
         this.values = e.target.value;
         this.searchService.searchTvShow(e.target.value)
           .then((data) => {
-            console.log(data);
             this.onShowsResult.emit(data);
           });
       }
