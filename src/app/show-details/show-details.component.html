@@ -1,0 +1,14 @@
+<div>
+  <div>
+    cast component goes here
+    <div *ngFor="let actor of cast">
+      <div>{{actor.person.name}}</div>
+      <div><img [src]="actor.person.image.medium" alt=""/></div>
+    </div>
+  </div>
+  <div>
+    youtube video component goes here
+  </div>
+</div>
+<button (click)="goBack()">Back</button>
+

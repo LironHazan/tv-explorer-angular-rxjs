@@ -1,7 +1,7 @@
 <div>
-  <div *ngFor="let item of shows">
-    <div>{{item.show.name}}</div>
-    <div><img [src]="item.show.image.medium" alt=""/></div>
-    <div>{{item.show.summary}}</div>
+  <div *ngFor="let show of shows">
+    <h3 class="show-title" (click)="gotoDetail(show.id)">{{show.name}}</h3>
+    <div><img [src]="show.image.medium" alt=""/></div>
+    <div [innerHtml]="show.summary"></div>
   </div>
 </div>

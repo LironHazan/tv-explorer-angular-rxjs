@@ -9,8 +9,7 @@ import { SearchService } from './search.service';
 
 export class SearchComponent implements OnInit {
 
-  constructor(private searchService: SearchService) {
-  }
+  constructor(private searchService: SearchService) {}
 
   ngOnInit() {
   }
@@ -25,10 +24,13 @@ export class SearchComponent implements OnInit {
         this.values = e.target.value;
         this.searchService.searchTvShow(e.target.value)
           .then((data) => {
-            this.onShowsResult.emit(data);
+            this.updateParentComponent(data);
           });
       }
     }
   }
 
+  updateParentComponent(data){
+    this.onShowsResult.emit(data);
+  }
 }
