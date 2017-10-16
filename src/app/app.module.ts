@@ -4,23 +4,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { ShowsComponent } from './shows/shows.component';
-import { RouterModule }   from '@angular/router';
 import { ShowDetailsComponent } from './show-details/show-details.component';
+import {AppRoutingModule} from './app-routing.module';
+import {PageNotFoundComponent} from './not-found.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     ShowsComponent,
-    ShowDetailsComponent
+    ShowDetailsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      {path: 'shows', component: ShowsComponent},
-      {path: 'show/:id', component: ShowDetailsComponent}
-    ])
+    AppRoutingModule
   ],
   providers: [{provide: 'tvAPI', useValue: 'http://api.tvmaze.com/'},
     {provide: 'ytAPI', useValue: 'https://www.googleapis.com/youtube/v3/search'},
