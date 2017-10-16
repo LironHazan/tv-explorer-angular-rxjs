@@ -13,7 +13,7 @@ export class ShowDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private location: Location, private appService: AppService) {}
 
-  public cast;
+  cast;
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -24,7 +24,7 @@ export class ShowDetailsComponent implements OnInit {
     });
   }
 
-  goBack(): void {
+  public goBack(): void {
     this.location.back();
   }
 }

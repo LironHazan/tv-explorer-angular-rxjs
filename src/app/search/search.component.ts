@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { SearchService } from './search.service';
 
 @Component({
@@ -7,18 +7,15 @@ import { SearchService } from './search.service';
   styleUrls: ['./search.component.css']
 })
 
-export class SearchComponent implements OnInit {
+export class SearchComponent {
 
   constructor(private searchService: SearchService) {}
 
-  ngOnInit() {
-  }
-
   @Output() onShowsResult = new EventEmitter();
 
-  values = '';
+  values;
 
-  searchTvShow(e: any){
+  public searchTvShow(e: any){
     if(e.keyCode === 13){
       if(e.target.value){
         this.values = e.target.value;
@@ -30,7 +27,7 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  updateParentComponent(data){
+  private updateParentComponent(data){
     this.onShowsResult.emit(data);
   }
 }

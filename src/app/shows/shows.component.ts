@@ -11,7 +11,7 @@ import { AppService } from '../app.service';
 })
 export class ShowsComponent implements OnInit {
 
-  public shows = [];
+  shows = [];
 
   constructor(private router: Router, private route: ActivatedRoute, private appService: AppService) {}
 
@@ -19,7 +19,7 @@ export class ShowsComponent implements OnInit {
     this.shows = this.appService.getShows();
   }
 
-  gotoDetail(id): void {
+  public gotoDetail(id): void {
     this.router.navigate(['/show', id]);
   }
 
