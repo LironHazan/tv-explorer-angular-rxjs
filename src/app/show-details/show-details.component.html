@@ -1,13 +1,14 @@
-<div>
-  <div>
-    cast component goes here
+<div class="show-details-container">
+  <div class="cast">
     <div *ngFor="let actor of cast">
       <div>{{actor.person.name}}</div>
       <div><img [src]="actor.person.image.medium" alt=""/></div>
     </div>
   </div>
-  <div>
-    youtube video component goes here
+  <div class="videos">
+    <div *ngFor="let snap of videos">
+      <img [src]="snap.snippet.thumbnails.default.url" (click)="open()"/>
+    </div>
   </div>
 </div>
 <button (click)="goBack()">Back</button>

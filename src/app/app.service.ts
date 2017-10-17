@@ -26,6 +26,11 @@ export class AppService {
       .toPromise();
   }
 
+  public fetchShow(id) {
+    return this.http.get(`${this.tvAPI}shows/${id}`)
+      .toPromise();
+  }
+
   public searchVideos(query) {
     return this.http.get(`${this.ytAPI}?q=${query}&part=snippet&key=${this.ytKey}`)
       .toPromise();

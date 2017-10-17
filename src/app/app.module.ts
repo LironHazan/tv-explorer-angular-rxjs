@@ -7,6 +7,8 @@ import { ShowsComponent } from './shows/shows.component';
 import { ShowDetailsComponent } from './show-details/show-details.component';
 import {AppRoutingModule} from './app-routing.module';
 import {PageNotFoundComponent} from './not-found.component';
+import { YoutubeComponent } from './show-details/youtube/youtube.component';
+import { CastComponent } from './show-details/cast/cast.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import {PageNotFoundComponent} from './not-found.component';
     SearchComponent,
     ShowsComponent,
     ShowDetailsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    YoutubeComponent,
+    CastComponent
   ],
   imports: [
     BrowserModule,

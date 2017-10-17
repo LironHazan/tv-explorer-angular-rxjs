@@ -22,7 +22,8 @@ export class SearchComponent {
         this.searchService.searchTvShow(e.target.value)
           .then((data) => {
             this.updateParentComponent(data);
-          });
+          })
+          .catch((err) => {console.log(err)});
       }
     }
   }
