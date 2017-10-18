@@ -9,6 +9,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {PageNotFoundComponent} from './not-found.component';
 import { YoutubeComponent } from './show-details/youtube/youtube.component';
 import { CastComponent } from './show-details/cast/cast.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { CastComponent } from './show-details/cast/cast.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule.forRoot()
   ],
   providers: [{provide: 'tvAPI', useValue: 'http://api.tvmaze.com/'},
     {provide: 'ytAPI', useValue: 'https://www.googleapis.com/youtube/v3/search'},

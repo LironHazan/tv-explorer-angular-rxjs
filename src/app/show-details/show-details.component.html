@@ -7,7 +7,7 @@
   </div>
   <div class="videos">
     <div *ngFor="let snap of videos">
-      <img [src]="snap.snippet.thumbnails.default.url" (click)="open()"/>
+      <img [src]="snap.snippet.thumbnails.default.url" (click)="open(content)"/>
     </div>
   </div>
 </div>
