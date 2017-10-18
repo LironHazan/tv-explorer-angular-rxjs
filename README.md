@@ -1,5 +1,18 @@
 # TvExplorerAngularRxjs
 
+tv-explorer is an Angular + Rxjs boilerplate demonstrating component based architecture app in Angular.
+
+API's use:
+
+http://api.tvmaze.com/
+https://www.googleapis.com/youtube/v3/search 
+
+Showing:
+- parent --> child data flow using @Input() decorator 
+- child --> parent event using angular's EventEmitter and @Output() decorator 
+- ui routing in Angular 
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.5.
 
 ## Development server
