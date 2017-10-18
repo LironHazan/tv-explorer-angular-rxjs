@@ -1,13 +1,23 @@
 <div class="show-details-container">
   <div class="cast">
-    <div *ngFor="let actor of cast">
-      <div>{{actor.person.name}}</div>
-      <div><img [src]="actor.person.image.medium" alt=""/></div>
-    </div>
+    <app-cast [cast]="cast"></app-cast>
   </div>
   <div class="videos">
     <div *ngFor="let snap of videos">
-      <img [src]="snap.snippet.thumbnails.default.url" (click)="open(content)"/>
+      <img class="thumbnail" [src]="snap.snippet.thumbnails.default.url" (click)="open(content)"/>
+      <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-youtube [url]="snap.id.videoId"> </app-youtube>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>

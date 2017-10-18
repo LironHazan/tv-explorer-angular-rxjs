@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppService } from '../app.service';
 import { Location } from '@angular/common';
@@ -17,7 +17,7 @@ export class ShowDetailsComponent implements OnInit {
   cast;
   show;
   videos;
-  snaps; // snippet.thumbnails.default.url
+  urls;
   closeResult: string;
 
   ngOnInit() {
@@ -37,7 +37,6 @@ export class ShowDetailsComponent implements OnInit {
           }
           return acc;
         }, []);
-        console.log(this.videos);
       }).catch((err) => {console.log(err); });
     });
   }

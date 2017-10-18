@@ -11,10 +11,11 @@ export class AppService {
   constructor(@Inject('tvAPI') private tvAPI,
               @Inject('ytAPI') private ytAPI,
               @Inject('ytKey') private ytKey,
-              private http:HttpClient) {}
+              @Inject('ytDomain') private ytDomain,
+              private http: HttpClient) {}
 
   public setShows(shows) {
-    this._shows = shows
+    this._shows = shows;
   }
 
   public getShows() {
@@ -34,6 +35,9 @@ export class AppService {
   public searchVideos(query) {
     return this.http.get(`${this.ytAPI}?q=${query}&part=snippet&key=${this.ytKey}`)
       .toPromise();
+  }
+  public youtubeDomain() {
+    return this.ytDomain;
   }
 
 }

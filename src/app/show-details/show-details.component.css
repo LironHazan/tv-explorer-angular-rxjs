@@ -3,5 +3,11 @@
   width: 100%;
 }
 .cast {
-
+  padding-left: 1em;
+}
+.videos {
+  padding-left: 10em;
+}
+.thumbnail {
+  padding-top: 1em;
 }

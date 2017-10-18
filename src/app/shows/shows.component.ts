@@ -15,7 +15,7 @@ export class ShowsComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private appService: AppService) {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.shows = this.appService.getShows();
   }
 
