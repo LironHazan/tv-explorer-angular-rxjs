@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CastComponent } from './cast.component';
 
-describe('CastComponent', () => {
+fdescribe('CastComponent', () => {
   let component: CastComponent;
   let fixture: ComponentFixture<CastComponent>;
 
