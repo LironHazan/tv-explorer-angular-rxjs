@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { YoutubeComponent } from './youtube.component';
 
-describe('YoutubeComponent', () => {
+fdescribe('YoutubeComponent', () => {
   let component: YoutubeComponent;
   let fixture: ComponentFixture<YoutubeComponent>;
 
@@ -19,7 +19,7 @@ describe('YoutubeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  fit('should create YoutubeComponent', () => {
     expect(component).toBeTruthy();
   });
 });

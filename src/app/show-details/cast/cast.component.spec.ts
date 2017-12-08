@@ -19,7 +19,7 @@ fdescribe('CastComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create CastComponent', () => {
     expect(component).toBeTruthy();
   });
 });

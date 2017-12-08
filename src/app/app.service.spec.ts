@@ -24,7 +24,18 @@ fdescribe('AppService', () => {
     init();
   });
 
-  it('should be created', inject([AppService], (service: AppService) => {
+  fit('should be created', inject([AppService], (service: AppService) => {
     expect(service).toBeTruthy();
+  }));
+
+  fit('should setShows and retrieve shows with getShows', inject([AppService], (service: AppService) => {
+    const shows = [{id: 1}, {id: 2}];
+    service.setShows(shows);
+    expect(service.getShows()).toEqual(shows);
+  }));
+
+  fit('should test youtubeDomain', inject([AppService], (service: AppService) => {
+    const _youtubeDomain = 'https://www.youtube.com/embed/';
+    expect(service.youtubeDomain()).toEqual(_youtubeDomain);
   }));
 });

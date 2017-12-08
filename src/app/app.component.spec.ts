@@ -37,10 +37,11 @@ const init = () => {
 
 
 describe('AppComponent', () => {
+
   beforeEach(async(() => {
     init();
   }));
-  fdescribe('Testing AppComponent: ', () => {
+  fdescribe('', () => {
     fit('should create the app', async(() => {
       const fixture = TestBed.createComponent(AppComponent);
       const app = fixture.debugElement.componentInstance;
@@ -55,8 +56,27 @@ describe('AppComponent', () => {
       const fixture = TestBed.createComponent(AppComponent);
       fixture.detectChanges();
       const compiled = fixture.debugElement.nativeElement;
-      expect(compiled.querySelector('h2').textContent).toContain('TV EXPLORER');
+        expect(compiled.querySelector('h2').textContent).toContain('TV EXPLORER');
     }));
+
+    fit('Verify app-search element appears', async(() => {
+      // fakeAppService = {
+      //   setShows: () => 'done'
+      // };
+
+      const fixture = TestBed.createComponent(AppComponent);
+      const app = fixture.debugElement.nativeElement;
+      const qs = app.querySelector('app-search');
+      expect(app.querySelector('app-search')).toBeTruthy();
+
+      // fakeAppService = jasmine.createSpyObj(fakeAppService, ['setShows']); // ??
+      // fakeAppService.setShows('foo').and.callFake(() => 'done');
+      // const component = new AppComponent(null, null, fakeAppService);
+      // component.handleShowsResult('foo');
+      // expect(fakeAppService.setShows).toHaveBeenCalled();
+
+    }));
+
   });
 
 });

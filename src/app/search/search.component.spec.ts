@@ -35,7 +35,7 @@ fdescribe('SearchComponent', () => {
     fixture.detectChanges();
   });
 
-  fit('should create', () => {
+  fit('should create SearchComponent', () => {
     expect(component).toBeTruthy();
   });
 });

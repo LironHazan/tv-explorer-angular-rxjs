@@ -25,7 +25,7 @@ fdescribe('SearchService', () => {
     init();
   });
 
-  it('should be created', inject([SearchService], (service: SearchService) => {
+  it('SearchService should be created', inject([SearchService], (service: SearchService) => {
     expect(service).toBeTruthy();
   }));
 });

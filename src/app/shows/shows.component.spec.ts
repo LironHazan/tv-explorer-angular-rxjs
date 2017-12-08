@@ -47,7 +47,7 @@ fdescribe('ShowsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create ShowsComponent', () => {
     expect(component).toBeTruthy();
   });
 });
