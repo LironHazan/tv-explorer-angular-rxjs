@@ -75,7 +75,7 @@ describe('AppComponent', () => {
     fit('handleShowsResult returns goToShows ', async(() => {
       const fixture = TestBed.createComponent(AppComponent);
       const app = fixture.componentInstance;
-      const shows = [];
+      const shows = [{show: []}, {show: []}];
       app.handleShowsResult(shows)
         .then((boolean) => {
           expect(boolean).toBeTruthy();

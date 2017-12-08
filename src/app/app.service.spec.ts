@@ -38,4 +38,24 @@ fdescribe('AppService', () => {
     const _youtubeDomain = 'https://www.youtube.com/embed/';
     expect(service.youtubeDomain()).toEqual(_youtubeDomain);
   }));
+
+  fit('should searchCast return a promise', inject([AppService], (service: AppService) => {
+    service.searchCast('12345')
+      .then((result) => {
+        expect(result).toBeTruthy();
+      });
+  }));
+  fit('should fetchShow return a promise', inject([AppService], (service: AppService) => {
+    service.fetchShow('12345')
+      .then((result) => {
+        expect(result).toBeTruthy();
+      });
+  }));
+  fit('should searchVideos return a promise', inject([AppService], (service: AppService) => {
+    service.searchVideos('12345')
+      .then((result) => {
+        expect(result).toBeTruthy();
+      });
+  }));
+
 });
