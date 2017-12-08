@@ -21,13 +21,13 @@ export class AppComponent {
   constructor (private SearchService: SearchService, private router: Router, private appService: AppService) {}
 
   // will be called upon onShowsResult event when searching a show
-  public handleShowsResult(data: any): void {
-    this.shows = data.map((show) => show.show);
+  public handleShowsResult(data: any) {
+    this.shows = data ? data.map((show) => show.show) : [];
     this.appService.setShows(this.shows);
-    this.goToShows();
+    return this.goToShows();
   }
 
   public goToShows() {
-    this.router.navigate(['/shows']);
+    return this.router.navigate(['/shows']);
   }
 }

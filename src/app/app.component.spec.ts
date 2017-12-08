@@ -58,24 +58,30 @@ describe('AppComponent', () => {
       const compiled = fixture.debugElement.nativeElement;
         expect(compiled.querySelector('h2').textContent).toContain('TV EXPLORER');
     }));
-
     fit('Verify app-search element appears', async(() => {
-      // fakeAppService = {
-      //   setShows: () => 'done'
-      // };
-
       const fixture = TestBed.createComponent(AppComponent);
       const app = fixture.debugElement.nativeElement;
-      const qs = app.querySelector('app-search');
       expect(app.querySelector('app-search')).toBeTruthy();
-
-      // fakeAppService = jasmine.createSpyObj(fakeAppService, ['setShows']); // ??
-      // fakeAppService.setShows('foo').and.callFake(() => 'done');
-      // const component = new AppComponent(null, null, fakeAppService);
-      // component.handleShowsResult('foo');
-      // expect(fakeAppService.setShows).toHaveBeenCalled();
-
     }));
+
+    fit('goToShows returns a router.navigation call which returns promise resolved to true', async(() => {
+      const fixture = TestBed.createComponent(AppComponent);
+      const app = fixture.componentInstance;
+      app.goToShows()
+        .then((boolean) => {
+          expect(boolean).toBeTruthy();
+        });
+    }));
+    fit('handleShowsResult returns goToShows ', async(() => {
+      const fixture = TestBed.createComponent(AppComponent);
+      const app = fixture.componentInstance;
+      const shows = [];
+      app.handleShowsResult(shows)
+        .then((boolean) => {
+          expect(boolean).toBeTruthy();
+        });
+    }));
+
 
   });
 
