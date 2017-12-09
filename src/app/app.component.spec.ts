@@ -11,72 +11,64 @@ import { YoutubeComponent } from './show-details/youtube/youtube.component';
 import { CastComponent } from './show-details/cast/cast.component';
 import {APP_BASE_HREF} from '@angular/common';
 
-const init = () => {
-  TestBed.configureTestingModule({
-    declarations: [
-      AppComponent,
-      SearchComponent,
-      ShowsComponent,
-      CastComponent,
-      YoutubeComponent,
-      PageNotFoundComponent,
-      ShowDetailsComponent
-    ],
-    imports: [
-      HttpClientModule,
-      AppRoutingModule
-    ],
-    providers: [{provide: 'tvAPI', useValue: 'http://api.tvmaze.com/'},
-      {provide: 'ytAPI', useValue: 'https://www.googleapis.com/youtube/v3/search'},
-      {provide: 'ytKey', useValue: 'AIzaSyBFflDzcHx0z3lTTZdvLGphfC1LXgFg_cg'},
-      {provide: 'ytDomain', useValue: 'https://www.youtube.com/embed/'},
-      {provide: APP_BASE_HREF, useValue : '/' }],
-  })
-    .compileComponents();
-};
-
-
 describe('AppComponent', () => {
 
+  const init = () => {
+    TestBed.configureTestingModule({
+      declarations: [
+        AppComponent,
+        SearchComponent,
+        ShowsComponent,
+        CastComponent,
+        YoutubeComponent,
+        PageNotFoundComponent,
+        ShowDetailsComponent
+      ],
+      imports: [
+        HttpClientModule,
+        AppRoutingModule
+      ],
+      providers: [{provide: 'tvAPI', useValue: 'http://api.tvmaze.com/'},
+        {provide: 'ytAPI', useValue: 'https://www.googleapis.com/youtube/v3/search'},
+        {provide: 'ytKey', useValue: 'AIzaSyBFflDzcHx0z3lTTZdvLGphfC1LXgFg_cg'},
+        {provide: 'ytDomain', useValue: 'https://www.youtube.com/embed/'},
+        {provide: APP_BASE_HREF, useValue : '/' }],
+    })
+      .compileComponents();
+  };
+  let fixture;
+  let element;
+  let component;
   beforeEach(async(() => {
     init();
+    fixture = TestBed.createComponent(AppComponent);
+    element = fixture.debugElement.nativeElement;
+    component = fixture.debugElement.componentInstance;
   }));
+
   fdescribe('', () => {
     fit('should create the app', async(() => {
-      const fixture = TestBed.createComponent(AppComponent);
-      const app = fixture.debugElement.componentInstance;
-      expect(app).toBeTruthy();
+      expect(component).toBeTruthy();
     }));
     fit(`should have as shows 'search a show'`, async(() => {
-      const fixture = TestBed.createComponent(AppComponent);
-      const app = fixture.debugElement.componentInstance;
-      expect(app.shows).toEqual('search a show');
+      expect(component.shows).toEqual('search a show');
     }));
     fit('should render title in a h2 tag', async(() => {
-      const fixture = TestBed.createComponent(AppComponent);
-      fixture.detectChanges();
-      const compiled = fixture.debugElement.nativeElement;
-        expect(compiled.querySelector('h2').textContent).toContain('TV EXPLORER');
+        expect(element.querySelector('h2').textContent).toContain('TV EXPLORER');
     }));
     fit('Verify app-search element appears', async(() => {
-      const fixture = TestBed.createComponent(AppComponent);
-      const app = fixture.debugElement.nativeElement;
-      expect(app.querySelector('app-search')).toBeTruthy();
+      expect(element.querySelector('app-search')).toBeTruthy();
     }));
 
     fit('goToShows returns a router.navigation call which returns promise resolved to true', async(() => {
-      const fixture = TestBed.createComponent(AppComponent);
-      const app = fixture.componentInstance;
-      app.goToShows()
+      component.goToShows()
         .then((boolean) => {
           expect(boolean).toBeTruthy();
         });
     }));
     fit('handleShowsResult returns goToShows ', async(() => {
-      const fixture = TestBed.createComponent(AppComponent);
-      const app = fixture.componentInstance;
       const shows = [{show: []}, {show: []}];
-      app.handleShowsResult(shows)
+      component.handleShowsResult(shows)
         .then((boolean) => {
           expect(boolean).toBeTruthy();
         });

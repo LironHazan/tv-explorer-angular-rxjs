@@ -19,7 +19,7 @@ export class SearchComponent {
     if (e.keyCode === 13) {
       if (e.target.value) {
         this.values = e.target.value;
-        this.searchService.searchTvShow(e.target.value)
+        return this.searchService.searchTvShow(e.target.value)
           .then((data) => {
             this.updateParentComponent(data);
           })
@@ -28,7 +28,7 @@ export class SearchComponent {
     }
   }
 
-  private updateParentComponent(data) {
-    this.onShowsResult.emit(data);
+   updateParentComponent(data) {
+    return this.onShowsResult.emit(data);
   }
 }
