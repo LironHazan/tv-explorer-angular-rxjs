@@ -55,7 +55,6 @@ fdescribe('SearchComponent', () => {
   });
 
   fit('calling searchTvShow with mocked event', () => {
-    // spyOn(component, 'searchTvShow');
     const event = {keyCode: 13, target: {value: 'foo'}};
     component.searchTvShow(event)
       .then((bar) => {
