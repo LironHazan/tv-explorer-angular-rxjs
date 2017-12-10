@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, OnDestroy } from '@angular/core';
 import { SearchService } from './search.service';
 import { Subject, Observable } from 'rxjs/Rx';
 
@@ -8,7 +8,7 @@ import { Subject, Observable } from 'rxjs/Rx';
   styleUrls: ['./search.component.css']
 })
 
-export class SearchComponent {
+export class SearchComponent implements OnDestroy {
 
   constructor(private searchService: SearchService) {}
 
@@ -48,5 +48,9 @@ export class SearchComponent {
 
    updateParentComponent(data) {
     return this.onShowsResult.emit(data);
+  }
+
+  ngOnDestroy() {
+    this.subject.unsubscribe();
   }
 }
