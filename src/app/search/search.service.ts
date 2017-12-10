@@ -9,8 +9,8 @@ export class SearchService {
   constructor(@Inject('tvAPI') private tvAPI, private http: HttpClient) {}
 
   public searchTvShow(query) {
-    return this.http.get(`${this.tvAPI}search/shows?q=:${query}/`)
-      .toPromise();
+    return this.http.get(`${this.tvAPI}search/shows?q=:${query}/`);
+      // .toPromise();
   }
 
 }
