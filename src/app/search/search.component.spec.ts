@@ -54,12 +54,12 @@ fdescribe('SearchComponent', () => {
        });
   });
 
-  // fit('calling searchTvShow with mocked event', () => {
-  //   const event = {keyCode: 13, target: {value: 'foo'}};
-  //   component.searchTvShow(event)
-  //     .then((bar) => {
-  //       expect(bar).toBeTruthy();
-  //     });
-  // });
+  fit('calling searchTvShow with mocked event', () => {
+    const event = {keyCode: 13, target: {value: 'foo'}};
+    component.searchTvShow$(event)
+      .subscribe((bar) => {
+        expect(bar).toBeTruthy();
+      });
+  });
 
 });

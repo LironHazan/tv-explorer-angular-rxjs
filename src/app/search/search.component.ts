@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { SearchService } from './search.service';
-//  { Observable } from 'rxjs/Rx';
+import { Subject, Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-search',
@@ -12,20 +12,24 @@ export class SearchComponent {
 
   constructor(private searchService: SearchService) {}
 
+  private subject = new Subject<any>();
+
   @Output() onShowsResult = new EventEmitter();
 
   values;
 
-  public searchTvShow(e: any) {
+  public searchTvShow$(e: any): Observable <any> {
+    const obs$ = this.searchService.searchTvShow$(e.target.value);
     if (e.keyCode === 13) {
       if (e.target.value) {
         this.values = e.target.value;
-        return this.searchService.searchTvShow(e.target.value)
-          .subscribe((data) => {
-            return this.updateParentComponent(data);
+        obs$.subscribe((data) => {
+              this.updateParentComponent(data);
+              return this.subject.asObservable();
           });
       }
     }
+    return obs$;
   }
 
   // when using toPromise:
