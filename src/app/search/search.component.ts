@@ -25,7 +25,6 @@ export class SearchComponent implements OnDestroy {
         this.values = e.target.value;
         obs$.subscribe((data) => {
               this.updateParentComponent(data);
-              return this.subject.asObservable();
           });
       }
     }
