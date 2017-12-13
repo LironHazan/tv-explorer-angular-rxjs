@@ -8,8 +8,7 @@ http://api.tvmaze.com/
 https://www.googleapis.com/youtube/v3/search 
 
 Showing:
-- parent --> child data flow using @Input() decorator 
-- child --> parent event using angular's EventEmitter and @Output() decorator 
+- use of ngrx-store for state management 
 - ui routing in Angular 
 
 
