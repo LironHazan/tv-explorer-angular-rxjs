@@ -19,6 +19,7 @@ interface SearchState {
 export class SearchComponent {
 
   constructor(private router: Router, private searchService: SearchService, private store: Store<SearchState>) {
+      store.select('shows');
   }
   values;
 
