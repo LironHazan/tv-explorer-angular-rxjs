@@ -21,18 +21,14 @@ export class SearchComponent {
   constructor(private router: Router, private searchService: SearchService, private store: Store<SearchState>) {
       store.select('shows');
   }
-  values;
 
   public searchTvShow$(e: any): Observable <any> {
     const obs$ = this.searchService.searchTvShow$(e.target.value);
     if (e.keyCode === 13) {
-      if (e.target.value) {
-        this.values = e.target.value;
-          obs$.subscribe((data) => {
-            this.store.dispatch({ type: SAVE, payload: data });
-            this.router.navigate(['/shows']);
-          });
-      }
+      obs$.subscribe((data) => {
+        this.store.dispatch({ type: SAVE, payload: data });
+        this.router.navigate(['/shows']);
+      });
     }
     return obs$;
   }
