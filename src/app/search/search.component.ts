@@ -6,7 +6,7 @@ import { SAVE } from '../reducers/tv-shows';
 import { Router } from '@angular/router';
 
 
-interface Shows {
+interface SearchState {
   shows: any;
 }
 
@@ -18,10 +18,7 @@ interface Shows {
 
 export class SearchComponent {
 
-  shows: Observable<any>;
-
-  constructor(private router: Router, private searchService: SearchService, private store: Store<Shows>) {
-    this.shows = store.select('shows');
+  constructor(private router: Router, private searchService: SearchService, private store: Store<SearchState>) {
   }
   values;
 
