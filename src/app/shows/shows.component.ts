@@ -1,8 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppService } from '../app.service';
+import { Store } from '@ngrx/store';
 
+interface AppState {
+  shows: any;
+}
 
 @Component({
   selector: 'app-shows',
@@ -13,10 +15,11 @@ export class ShowsComponent implements OnInit {
 
   shows = [];
 
-  constructor(private router: Router, private route: ActivatedRoute, private appService: AppService) {}
+  constructor(private router: Router, private store: Store<AppState>) {}
 
   ngOnInit() {
-    this.shows = this.appService.getShows();
+    this.store.select('shows')
+      .subscribe(data => {this.shows = data; });
   }
 
   public gotoDetail(id): void {

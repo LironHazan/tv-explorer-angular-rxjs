@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/catch';
 import { SearchService } from './search/search.service';
 import { AppService } from './app.service';
+
 
 @Component({
   selector: 'app-root',
@@ -16,18 +10,7 @@ import { AppService } from './app.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  shows = 'search a show';
+  shows = [];
 
-  constructor (private SearchService: SearchService, private router: Router, private appService: AppService) {}
-
-  // will be called upon onShowsResult event when searching a show
-  public handleShowsResult(data: any) {
-    this.shows = data ? data.map((show) => show.show) : [];
-    this.appService.setShows(this.shows);
-    return this.goToShows();
-  }
-
-  public goToShows() {
-    return this.router.navigate(['/shows']);
-  }
+  constructor () {}
 }

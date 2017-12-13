@@ -10,6 +10,8 @@ import {PageNotFoundComponent} from './not-found.component';
 import { YoutubeComponent } from './show-details/youtube/youtube.component';
 import { CastComponent } from './show-details/cast/cast.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { StoreModule } from '@ngrx/store';
+import { showsReducer } from './reducers/tv-shows';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    StoreModule.forRoot({ shows: showsReducer })
   ],
   providers: [{provide: 'tvAPI', useValue: 'http://api.tvmaze.com/'},
     {provide: 'ytAPI', useValue: 'https://www.googleapis.com/youtube/v3/search'},

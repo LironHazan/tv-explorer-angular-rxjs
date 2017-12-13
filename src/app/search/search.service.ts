@@ -9,7 +9,6 @@ export class SearchService {
 
   public searchTvShow$(query) {
     return this.http.get(`${this.tvAPI}search/shows?q=:${query}/`);
-    // .toPromise();
   }
 
 }

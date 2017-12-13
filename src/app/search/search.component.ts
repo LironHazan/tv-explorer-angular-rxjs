@@ -1,6 +1,14 @@
-import { Component, EventEmitter, Output, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { SearchService } from './search.service';
-import { Subject, Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
+import { Store } from '@ngrx/store';
+import { SAVE } from '../reducers/tv-shows';
+import { Router } from '@angular/router';
+
+
+interface Shows {
+  shows: any;
+}
 
 @Component({
   selector: 'app-search',
@@ -8,14 +16,13 @@ import { Subject, Observable } from 'rxjs/Rx';
   styleUrls: ['./search.component.css']
 })
 
-export class SearchComponent implements OnDestroy {
+export class SearchComponent {
 
-  constructor(private searchService: SearchService) {}
+  shows: Observable<any>;
 
-  private subject = new Subject<any>();
-
-  @Output() onShowsResult = new EventEmitter();
-
+  constructor(private router: Router, private searchService: SearchService, private store: Store<Shows>) {
+    this.shows = store.select('shows');
+  }
   values;
 
   public searchTvShow$(e: any): Observable <any> {
@@ -23,33 +30,12 @@ export class SearchComponent implements OnDestroy {
     if (e.keyCode === 13) {
       if (e.target.value) {
         this.values = e.target.value;
-        obs$.subscribe((data) => {
-              this.updateParentComponent(data);
+          obs$.subscribe((data) => {
+            this.store.dispatch({ type: SAVE, payload: data });
+            this.router.navigate(['/shows']);
           });
       }
     }
     return obs$;
-  }
-
-  // when using toPromise:
-  // public searchTvShow(e: any) {
-  //   if (e.keyCode === 13) {
-  //     if (e.target.value) {
-  //       this.values = e.target.value;
-  //       return this.searchService.searchTvShow(e.target.value)
-  //         .then((data) => {
-  //           this.updateParentComponent(data);
-  //         })
-  //         .catch((err) => {console.log(err); });
-  //     }
-  //   }
-  // }
-
-   updateParentComponent(data) {
-    return this.onShowsResult.emit(data);
-  }
-
-  ngOnDestroy() {
-    this.subject.unsubscribe();
   }
 }
